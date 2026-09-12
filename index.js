@@ -1,3 +1,5 @@
+const add = require("./math");
+
 const name = "Abhishek";
 const age = 39;
 
