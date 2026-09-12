@@ -5,3 +5,4 @@ const age = 39;
 
 console.log("My name is:", name);
 console.log("My age is:", age);
+console.log(add(10, 20));
