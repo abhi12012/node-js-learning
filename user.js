@@ -1,3 +1,8 @@
 const userName = "Abhishek";
 
-module.exports = userName;
+const age = 39;
+
+module.exports = {
+  userName,
+  age
+};
