@@ -2,6 +2,10 @@ const path = require("path");
 const fs = require("fs");
 fs.writeFileSync("message.txt", "Hello from Node.js");
 
+const content = fs.readFileSync("message.txt", "utf8");
+
+console.log(content);
+
 
 
 const filePath = path.join("data", "users.txt");
