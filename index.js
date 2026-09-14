@@ -1,3 +1,5 @@
+const path = require("path");
+
 const { add, subtract, multiply } = require("./math");
 
 const { name: exportedName } = require("./export-test");
