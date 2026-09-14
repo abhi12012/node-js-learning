@@ -1,5 +1,8 @@
 const path = require("path");
 const fs = require("fs");
+fs.writeFileSync("message.txt", "Hello from Node.js");
+
+
 
 const filePath = path.join("data", "users.txt");
 
