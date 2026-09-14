@@ -1,4 +1,6 @@
 const path = require("path");
+const fs = require("fs");
+
 const filePath = path.join("data", "users.txt");
 
 console.log(filePath);
