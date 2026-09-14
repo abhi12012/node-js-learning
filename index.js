@@ -4,6 +4,15 @@ const filePath = path.join("data", "users.txt");
 console.log(filePath);
 
 
+const fileName = path.basename(filePath);
+console.log(fileName);
+
+
+
+const fileExtension = path.extname(filePath);
+console.log(fileExtension);
+
+
 
 
 const { add, subtract, multiply } = require("./math");
