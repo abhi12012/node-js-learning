@@ -1,4 +1,10 @@
 const path = require("path");
+const filePath = path.join("data", "users.txt");
+
+console.log(filePath);
+
+
+
 
 const { add, subtract, multiply } = require("./math");
 
