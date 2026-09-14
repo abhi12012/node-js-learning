@@ -1,5 +1,7 @@
 const { add, subtract, multiply } = require("./math");
 
+const { name: exportedName } = require("./export-test");
+
 const { userName, age } = require("./user");
 
 const { message } = require("./greeting");
@@ -9,6 +11,9 @@ const name = "Abhishek";
 
 
 console.log("My name is:", name);
+console.log("Exported name:", exportedName);
+
+
 console.log("User name:", userName);
 
 console.log("My age is:", age);
