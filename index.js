@@ -1,5 +1,10 @@
 const path = require("path");
 const fs = require("fs");
+
+const fileExists = fs.existsSync("message.txt");
+console.log("File exists:", fileExists);
+
+
 fs.writeFileSync("message.txt", "Hello Abhishek");
 fs.appendFileSync("message.txt", "\nWelcome to Node.js");
 
