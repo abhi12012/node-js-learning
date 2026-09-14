@@ -1,6 +1,6 @@
 const path = require("path");
 const fs = require("fs");
-fs.writeFileSync("message.txt", "Hello from Node.js");
+fs.writeFileSync("message.txt", "Hello Abhishek");
 
 const content = fs.readFileSync("message.txt", "utf8");
 
