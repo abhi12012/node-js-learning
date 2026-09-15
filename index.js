@@ -32,6 +32,10 @@ fs.renameSync("old-name.txt", "new-name.txt");
 console.log("File renamed");
 
 
+const fileInfo = fs.statSync("message.txt");
+console.log("Is it a file:", fileInfo.isFile());
+
+
 
 const items = fs.readdirSync(".");
 console.log("Current folder items:", items);
