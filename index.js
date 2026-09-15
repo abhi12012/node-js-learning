@@ -21,6 +21,12 @@ console.log("Test file deleted");
 fs.mkdirSync("test-folder", { recursive: true });
 console.log("Test folder created");
 
+
+fs.rmdirSync("test-folder");
+console.log("Test folder deleted");
+
+
+
 const items = fs.readdirSync(".");
 console.log("Current folder items:", items);
 
