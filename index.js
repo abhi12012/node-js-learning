@@ -18,8 +18,11 @@ fs.unlinkSync("test-delete.txt");
 console.log("Test file deleted");
 
 
-fs.mkdirSync("test-folder");
+fs.mkdirSync("test-folder", { recursive: true });
 console.log("Test folder created");
+
+const items = fs.readdirSync(".");
+console.log("Current folder items:", items);
 
 
 fs.writeFileSync("message.txt", "Hello Abhishek");
