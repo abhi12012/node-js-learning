@@ -1,2 +1,0 @@
-Hello Abhishek
-Welcome to Node.js

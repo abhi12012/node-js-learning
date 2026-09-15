@@ -75,6 +75,10 @@ console.log("File copied");
 
 
 
+fs.rmSync("message-copy.txt");
+console.log("Copied file removed");
+
+
 const { add, subtract, multiply } = require("./math");
 
 const { name: exportedName } = require("./export-test");
