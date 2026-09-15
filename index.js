@@ -64,7 +64,10 @@ console.log(fileExtension);
 
 
 
+fs.mkdirSync("test-folder", { recursive: true });
 
+const folderInfo = fs.statSync("test-folder");
+console.log("Is it a folder:", folderInfo.isDirectory());
 
 
 
