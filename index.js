@@ -26,6 +26,12 @@ fs.rmdirSync("test-folder");
 console.log("Test folder deleted");
 
 
+fs.writeFileSync("old-name.txt", "This is a rename test");
+
+fs.renameSync("old-name.txt", "new-name.txt");
+console.log("File renamed");
+
+
 
 const items = fs.readdirSync(".");
 console.log("Current folder items:", items);
