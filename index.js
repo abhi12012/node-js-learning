@@ -5,6 +5,10 @@ const fileExists = fs.existsSync("message.txt");
 console.log("File exists:", fileExists);
 
 
+const result = fs.existsSync("abc.txt");
+console.log(result);
+
+
 fs.writeFileSync("message.txt", "Hello Abhishek");
 fs.appendFileSync("message.txt", "\nWelcome to Node.js");
 
@@ -26,6 +30,9 @@ console.log(fileName);
 
 const fileExtension = path.extname(filePath);
 console.log(fileExtension);
+
+
+
 
 
 
