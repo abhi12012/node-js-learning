@@ -36,6 +36,9 @@ const fileInfo = fs.statSync("message.txt");
 console.log("Is it a file:", fileInfo.isFile());
 
 
+console.log("File size:", fileInfo.size);
+
+
 
 const items = fs.readdirSync(".");
 console.log("Current folder items:", items);
@@ -68,6 +71,9 @@ fs.mkdirSync("test-folder", { recursive: true });
 
 const folderInfo = fs.statSync("test-folder");
 console.log("Is it a folder:", folderInfo.isDirectory());
+
+
+
 
 
 fs.copyFileSync("message.txt", "message-copy.txt");
