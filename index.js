@@ -9,17 +9,25 @@ const result = fs.existsSync("abc.txt");
 console.log(result);
 
 
+
+fs.writeFileSync("test-delete.txt", "This file will be deleted");
+console.log("Test file created");
+
+
+fs.unlinkSync("test-delete.txt");
+console.log("Test file deleted");
+
+
 fs.writeFileSync("message.txt", "Hello Abhishek");
 fs.appendFileSync("message.txt", "\nWelcome to Node.js");
 
-const content = fs.readFileSync("message.txt", "utf8");
 
+const content = fs.readFileSync("message.txt", "utf8");
 console.log(content);
 
 
 
 const filePath = path.join("data", "users.txt");
-
 console.log(filePath);
 
 
