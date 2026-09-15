@@ -18,6 +18,10 @@ fs.unlinkSync("test-delete.txt");
 console.log("Test file deleted");
 
 
+fs.mkdirSync("test-folder");
+console.log("Test folder created");
+
+
 fs.writeFileSync("message.txt", "Hello Abhishek");
 fs.appendFileSync("message.txt", "\nWelcome to Node.js");
 
