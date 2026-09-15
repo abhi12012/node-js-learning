@@ -70,6 +70,10 @@ const folderInfo = fs.statSync("test-folder");
 console.log("Is it a folder:", folderInfo.isDirectory());
 
 
+fs.copyFileSync("message.txt", "message-copy.txt");
+console.log("File copied");
+
+
 
 const { add, subtract, multiply } = require("./math");
 
