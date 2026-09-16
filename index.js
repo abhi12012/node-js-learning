@@ -34,9 +34,8 @@ console.log("File renamed");
 
 const fileInfo = fs.statSync("message.txt");
 console.log("Is it a file:", fileInfo.isFile());
-
-
 console.log("File size:", fileInfo.size);
+console.log("Last modified:", fileInfo.mtime);
 
 
 
