@@ -1,5 +1,29 @@
 const path = require("path");
 const fs = require("fs");
+const os = require("os");
+const url = require("url");
+
+
+const myUrl = url.parse("https://example.com/products?id=10&category=shoes");
+console.log(myUrl);
+console.log("Protocol:", myUrl.protocol);
+console.log("Hostname:", myUrl.hostname);
+console.log("Pathname:", myUrl.pathname);
+console.log("Query:", myUrl.query);
+const params = new URLSearchParams(myUrl.query);
+
+console.log("Product ID:", params.get("id"));
+console.log("Category:", params.get("category"));
+
+
+
+console.log("Platform:", os.platform());
+console.log("CPU count:", os.cpus().length);
+console.log("Total memory:", os.totalmem());
+console.log("Free memory:", os.freemem());
+
+
+
 
 const fileExists = fs.existsSync("message.txt");
 console.log("File exists:", fileExists);
