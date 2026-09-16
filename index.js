@@ -84,6 +84,24 @@ fs.rmSync("message-copy.txt");
 console.log("Copied file removed");
 
 
+fs.writeFile("async-test.txt", "Hello from Async", (error) => {
+  if (error) {
+    console.log("Error:", error);
+    return;
+  }
+
+  console.log("Async file written successfully");
+});
+
+
+
+
+
+
+
+
+
+
 const { add, subtract, multiply } = require("./math");
 
 const { name: exportedName } = require("./export-test");
