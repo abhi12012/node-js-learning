@@ -1,29 +1,29 @@
-// const path = require("path");
-// const fs = require("fs");
-// const os = require("os");
-// const url = require("url");
+const path = require("path");
+const fs = require("fs");
+const os = require("os");
+const url = require("url");
 const EventEmitter = require("events");
 
 
-const emitter = new EventEmitter();
+// const emitter = new EventEmitter();
 
-emitter.on("login", (name, age) => {
-  console.log("User logged in:", name);
-  console.log("Age:", age);
-});
-
-
-const welcomeUser = (name) => {
-  console.log("Welcome:", name);
-};
-
-emitter.on("login", welcomeUser);
-
-emitter.off("login", welcomeUser);
+// emitter.on("login", (name, age) => {
+//   console.log("User logged in:", name);
+//   console.log("Age:", age);
+// });
 
 
+// const welcomeUser = (name) => {
+//   console.log("Welcome:", name);
+// };
 
-emitter.emit("login", "Abhishek", 39);
+// emitter.on("login", welcomeUser);
+
+// emitter.off("login", welcomeUser);
+
+
+
+// emitter.emit("login", "Abhishek", 39);
 
 // const myUrl = url.parse("https://example.com/products?id=10&category=shoes");
 // console.log(myUrl);
@@ -139,11 +139,17 @@ emitter.emit("login", "Abhishek", 39);
 // });
 
 
+function doWork(callback) {
+  console.log("काम शुरू");
 
+  const result = "काम सफल हुआ";
 
+  callback(result);
+}
 
-
-
+doWork((message) => {
+  console.log(message);
+});
 
 
 
@@ -173,3 +179,7 @@ emitter.emit("login", "Abhishek", 39);
 // console.log(subtract(20, 5));
 
 // console.log(multiply(10, 5));
+
+
+
+
