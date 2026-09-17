@@ -141,18 +141,28 @@ const EventEmitter = require("events");
 
 
 
-const promise = new Promise((resolve) => {
-  resolve(10);
-});
-
-promise
-  .then((result) => {
-    console.log("पहला result:", result);
-    return result * 2;
-  })
-  .then((result) => {
-    console.log("दूसरा result:", result);
+function getData() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Data मिल गया");
+    }, 2000);
   });
+}
+
+async function doWork() {
+  console.log("1. काम शुरू");
+
+  const result = await getData();
+
+  console.log("2. Data मिला:", result);
+
+  console.log("3. काम खत्म");
+}
+
+doWork();
+
+console.log("4. doWork के बाहर का काम");
+
 
 
 
@@ -182,6 +192,9 @@ promise
 // console.log(subtract(20, 5));
 
 // console.log(multiply(10, 5));
+
+
+
 
 
 
