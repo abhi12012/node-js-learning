@@ -139,17 +139,20 @@ const EventEmitter = require("events");
 // });
 
 
-function doWork(callback) {
-  console.log("काम शुरू");
 
-  const result = "काम सफल हुआ";
 
-  callback(result);
-}
-
-doWork((message) => {
-  console.log(message);
+const promise = new Promise((resolve) => {
+  resolve(10);
 });
+
+promise
+  .then((result) => {
+    console.log("पहला result:", result);
+    return result * 2;
+  })
+  .then((result) => {
+    console.log("दूसरा result:", result);
+  });
 
 
 
