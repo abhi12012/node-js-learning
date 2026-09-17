@@ -142,26 +142,32 @@ const EventEmitter = require("events");
 
 
 function getData() {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve("Data मिल गया");
-    }, 2000);
+  return new Promise((resolve, reject) => {
+    const success = true;
+
+    if (success) {
+      resolve("Data सफलतापूर्वक मिल गया");
+    } else {
+      reject("Data लाने में error आ गया");
+    }
   });
 }
 
 async function doWork() {
-  console.log("1. काम शुरू");
+  console.log("काम शुरू");
 
-  const result = await getData();
+  try {
+    const result = await getData();
 
-  console.log("2. Data मिला:", result);
+    console.log("Data मिला:", result);
+  } catch (error) {
+    console.log("Error:", error);
+  }
 
-  console.log("3. काम खत्म");
+  console.log("काम खत्म");
 }
 
 doWork();
-
-console.log("4. doWork के बाहर का काम");
 
 
 
