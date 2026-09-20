@@ -40,6 +40,64 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+
+  if (req.method === "PATCH" && req.url.startsWith("/products/")) {
+  const id = Number(req.url.split("/")[2]);
+
+  let body = "";
+
+  req.on("data", (chunk) => {
+    body += chunk;
+  });
+
+  req.on("end", () => {
+    const updates = JSON.parse(body);
+
+    const product = products.find((product) => product.id === id);
+
+    if (!product) {
+      res.statusCode = 404;
+      res.setHeader("Content-Type", "application/json");
+      res.end(JSON.stringify({ message: "Product not found" }));
+      return;
+    }
+
+
+    Object.assign(product, updates);
+
+    res.setHeader("Content-Type", "application/json");
+    res.end(JSON.stringify(product));
+  });
+
+  return;
+}
+
+
+
+if (req.method === "DELETE" && req.url.startsWith("/products/")) {
+  const id = Number(req.url.split("/")[2]);
+
+  const productIndex = products.findIndex(
+    (product) => product.id === id
+  );
+
+  if (productIndex === -1) {
+    res.statusCode = 404;
+    res.setHeader("Content-Type", "application/json");
+    res.end(JSON.stringify({ message: "Product not found" }));
+    return;
+  }
+
+  const deletedProduct = products.splice(productIndex, 1);
+
+  res.setHeader("Content-Type", "application/json");
+  res.end(JSON.stringify(deletedProduct[0]));
+  return;
+}
+
+
+
+
   if (req.method === "GET" && req.url === "/products") {
     res.setHeader("Content-Type", "application/json");
     res.end(JSON.stringify(products));
