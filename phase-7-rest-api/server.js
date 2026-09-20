@@ -47,6 +47,61 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+
+
+
+  // PUT /products/:id
+if (req.method === "PUT" && req.url.startsWith("/products/")) {
+  const id = Number(req.url.split("/")[2]);
+
+  let body = "";
+
+  req.on("data", (chunk) => {
+    body += chunk;
+  });
+
+  req.on("end", () => {
+    const updatedProduct = JSON.parse(body);
+
+    const product = products.find((product) => product.id === id);
+
+    if (!product) {
+      res.statusCode = 404;
+      res.setHeader("Content-Type", "application/json");
+      res.end(JSON.stringify({ message: "Product not found" }));
+      return;
+    }
+
+    if (
+      !updatedProduct.name ||
+      updatedProduct.price === undefined ||
+      !updatedProduct.category
+    ) {
+      res.statusCode = 400;
+      res.setHeader("Content-Type", "application/json");
+      res.end(
+        JSON.stringify({
+          message: "Name, price and category are required"
+        })
+      );
+      return;
+    }
+
+    product.name = updatedProduct.name;
+    product.price = updatedProduct.price;
+    product.category = updatedProduct.category;
+
+    res.setHeader("Content-Type", "application/json");
+    res.end(JSON.stringify(product));
+  });
+
+  return;
+}
+
+
+
+
+
   // PATCH /products/:id
   if (req.method === "PATCH" && req.url.startsWith("/products/")) {
     const id = Number(req.url.split("/")[2]);
