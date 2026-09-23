@@ -1,19 +1,14 @@
 const express = require("express");
+const requestLogger = require("./middleware/requestLogger");
 
 const productRoutes = require("./routes/productRoutes");
 
 const app = express();
 
+app.use(requestLogger);
+
 app.use("/products", productRoutes);
 
-
-
-function requestLogger(req, res, next) {
-  console.log(req.method, req.url);
-  next();
-}
-
-app.use(requestLogger);
 
 app.get("/", (req, res) => {
   res.send("Hello from Express!");
