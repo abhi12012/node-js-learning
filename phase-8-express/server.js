@@ -2,11 +2,13 @@ const express = require("express");
 
 const app = express();
 
-
-app.use((req, res, next) => {
+function requestLogger(req, res, next) {
   console.log(req.method, req.url);
   next();
-});
+}
+
+
+app.use(requestLogger);
 
 app.get("/", (req, res) => {
   res.send("Hello from Express!");
