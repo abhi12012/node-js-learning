@@ -5,7 +5,7 @@ function getProducts(req, res) {
 
   const result = getProductsByCategory(category);
 
-  res.send(result);
+  res.json(result);
 }
 
 module.exports = {
