@@ -1,7 +1,11 @@
+const { getProductsByCategory } = require("../services/productService");
+
 function getProducts(req, res) {
   const category = req.query.category;
 
-  res.send(`Category is ${category}`);
+  const result = getProductsByCategory(category);
+
+  res.send(result);
 }
 
 module.exports = {
