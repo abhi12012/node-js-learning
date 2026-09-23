@@ -61,6 +61,20 @@ app.get("/products/:id", (req, res) => {
   res.send(`Product ID is ${req.params.id}`);
 });
 
+
+
+app.get("/error", (req, res, next) => {
+  next(new Error("Something went wrong!"));
+});
+
+app.use((err, req, res, next) => {
+  console.error(err.message);
+
+  res.status(500).json({
+    message: "Internal Server Error"
+  });
+});
+
 app.listen(3000, () => {
   console.log("Express server is running on port 3000");
 });
