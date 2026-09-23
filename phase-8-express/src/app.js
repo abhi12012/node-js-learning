@@ -1,7 +1,9 @@
+
+
 const express = require("express");
 const requestLogger = require("./middleware/requestLogger");
-
 const productRoutes = require("./routes/productRoutes");
+const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
 
@@ -49,16 +51,14 @@ app.get("/products/:id", (req, res) => {
   res.send(`Product ID is ${req.params.id}`);
 });
 
+
+
 app.get("/error", (req, res, next) => {
   next(new Error("Something went wrong!"));
 });
 
-app.use((err, req, res, next) => {
-  console.error(err.message);
 
-  res.status(500).json({
-    message: "Internal Server Error"
-  });
-});
+
+app.use(errorHandler);
 
 module.exports = app;
