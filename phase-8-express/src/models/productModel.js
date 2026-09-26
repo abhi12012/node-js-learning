@@ -1,3 +1,14 @@
+const mongoose = require("mongoose");
+
+const productSchema = new mongoose.Schema({
+  name: String,
+  price: Number,
+  category: String
+});
+
+
+const Product = mongoose.model("Product", productSchema);
+ 
 const products = [
   {
     id: 1,
@@ -18,5 +29,6 @@ function getAllProducts() {
 }
 
 module.exports = {
-  getAllProducts
+  getAllProducts,
+  Product
 };

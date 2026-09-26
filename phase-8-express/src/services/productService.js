@@ -1,7 +1,7 @@
-const { getAllProducts } = require("../models/productModel");
+const { Product } = require("../models/productModel");
 
-function getProductsByCategory(category) {
-  const products = getAllProducts();
+async function getProductsByCategory(category) {
+  const products = await Product.find();
 
   if (!category) {
     return products;
@@ -11,7 +11,6 @@ function getProductsByCategory(category) {
     (product) => product.category.toLowerCase() === category.toLowerCase()
   );
 }
-
 module.exports = {
   getProductsByCategory
 };
