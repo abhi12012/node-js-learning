@@ -1,186 +1,23 @@
-const path = require("path");
-const fs = require("fs");
-const os = require("os");
-const url = require("url");
-const EventEmitter = require("events");
+const { MongoClient } = require("mongodb");
 
+const password = encodeURIComponent(process.env.DB_PASSWORD);
 
-// const emitter = new EventEmitter();
 
-// emitter.on("login", (name, age) => {
-//   console.log("User logged in:", name);
-//   console.log("Age:", age);
-// });
 
+const mongoURI = `mongodb+srv://${process.env.DB_USER}:${password}@cluster0.odzloxv.mongodb.net/?appName=Cluster0`;
 
-// const welcomeUser = (name) => {
-//   console.log("Welcome:", name);
-// };
+const client = new MongoClient(mongoURI);
 
-// emitter.on("login", welcomeUser);
+async function connectDB() {
+  console.log("Trying MongoDB connection...");
 
-// emitter.off("login", welcomeUser);
+  try {
+    await client.connect();
+    console.log("MongoDB connected successfully");
+  } catch (error) {
+    console.log("MongoDB connection failed");
+    console.log(error.message);
+  }
+}
 
-
-
-// emitter.emit("login", "Abhishek", 39);
-
-// const myUrl = url.parse("https://example.com/products?id=10&category=shoes");
-// console.log(myUrl);
-// console.log("Protocol:", myUrl.protocol);
-// console.log("Hostname:", myUrl.hostname);
-// console.log("Pathname:", myUrl.pathname);
-// console.log("Query:", myUrl.query);
-// const params = new URLSearchParams(myUrl.query);
-
-// console.log("Product ID:", params.get("id"));
-// console.log("Category:", params.get("category"));
-
-
-
-// console.log("Platform:", os.platform());
-// console.log("CPU count:", os.cpus().length);
-// console.log("Total memory:", os.totalmem());
-// console.log("Free memory:", os.freemem());
-
-
-
-
-// const fileExists = fs.existsSync("message.txt");
-// console.log("File exists:", fileExists);
-
-
-// const result = fs.existsSync("abc.txt");
-// console.log(result);
-
-
-
-// fs.writeFileSync("test-delete.txt", "This file will be deleted");
-// console.log("Test file created");
-
-
-// fs.unlinkSync("test-delete.txt");
-// console.log("Test file deleted");
-
-
-// fs.mkdirSync("test-folder", { recursive: true });
-// console.log("Test folder created");
-
-
-// fs.rmdirSync("test-folder");
-// console.log("Test folder deleted");
-
-
-// fs.writeFileSync("old-name.txt", "This is a rename test");
-
-// fs.renameSync("old-name.txt", "new-name.txt");
-// console.log("File renamed");
-
-
-// const fileInfo = fs.statSync("message.txt");
-// console.log("Is it a file:", fileInfo.isFile());
-// console.log("File size:", fileInfo.size);
-// console.log("Last modified:", fileInfo.mtime);
-
-
-
-// const items = fs.readdirSync(".");
-// console.log("Current folder items:", items);
-
-
-// fs.writeFileSync("message.txt", "Hello Abhishek");
-// fs.appendFileSync("message.txt", "\nWelcome to Node.js");
-
-
-// const content = fs.readFileSync("message.txt", "utf8");
-// console.log(content);
-
-
-
-// const filePath = path.join("data", "users.txt");
-// console.log(filePath);
-
-
-// const fileName = path.basename(filePath);
-// console.log(fileName);
-
-
-
-// const fileExtension = path.extname(filePath);
-// console.log(fileExtension);
-
-
-
-// fs.mkdirSync("test-folder", { recursive: true });
-
-// const folderInfo = fs.statSync("test-folder");
-// console.log("Is it a folder:", folderInfo.isDirectory());
-
-
-
-
-
-// fs.copyFileSync("message.txt", "message-copy.txt");
-// console.log("File copied");
-
-
-
-// fs.rmSync("message-copy.txt");
-// console.log("Copied file removed");
-
-
-// fs.writeFile("async-test.txt", "Hello from Async", (error) => {
-//   if (error) {
-//     console.log("Error:", error);
-//     return;
-//   }
-
-//   console.log("Async file written successfully");
-// });
-
-
-
-
-console.log("1");
-
-setTimeout(() => {
-  console.log("2");
-}, 0);
-
-console.log("3");
-
-
-
-// const { add, subtract, multiply } = require("./math");
-
-// const { name: exportedName } = require("./export-test");
-
-// const { userName, age } = require("./user");
-
-// const { message } = require("./greeting");
-
-// const name = "Abhishek";
-
-
-
-// console.log("My name is:", name);
-// console.log("Exported name:", exportedName);
-
-
-// console.log("User name:", userName);
-
-// console.log("My age is:", age);
-// console.log(message);
-
-// console.log(add(10, 20));
-
-// console.log(subtract(20, 5));
-
-// console.log(multiply(10, 5));
-
-
-
-
-
-
-
+connectDB();
