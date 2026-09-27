@@ -2,6 +2,7 @@ const {
   getProductsByCategory,
   getProductById,
   updateProduct,
+  deleteProduct,
   createProduct
 } = require("../services/productService");
 
@@ -29,6 +30,14 @@ async function updateProductController(req, res) {
   res.json(updatedProduct);
 }
 
+async function deleteProductController(req, res) {
+  const id = req.params.id;
+
+  const deletedProduct = await deleteProduct(id);
+
+  res.json(deletedProduct);
+}
+
 async function createProductController(req, res) {
   const product = await createProduct(req.body);
 
@@ -39,5 +48,6 @@ module.exports = {
   getProducts,
   getProductById: getProductByIdController,
   updateProductController,
+  deleteProductController,
   createProductController
 };

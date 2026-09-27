@@ -1,4 +1,3 @@
-
 const { Product } = require("../models/productModel");
 
 async function getProductsByCategory(category) {
@@ -28,10 +27,16 @@ async function getProductById(id) {
 async function updateProduct(id, productData) {
 
   return await Product.findByIdAndUpdate(
-  id,
-  productData,
-  { returnDocument: "after" }
-);
+    id,
+    productData,
+    { returnDocument: "after" }
+  );
+
+}
+
+async function deleteProduct(id) {
+
+  return await Product.findByIdAndDelete(id);
 
 }
 
@@ -48,7 +53,7 @@ module.exports = {
   getProductsByCategory,
   getProductById,
   updateProduct,
+  deleteProduct,
   createProduct
 
 };
-
