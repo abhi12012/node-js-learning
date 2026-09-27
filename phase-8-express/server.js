@@ -13,7 +13,7 @@ const {
 
 
 
-console.log("Before database:", Boolean(DB_PASSWORD));
+
 
 
 connectDatabase();

@@ -3,10 +3,11 @@ const {
   createProduct
 } = require("../services/productService");
 
-function getProducts(req, res) {
+
+async function getProducts(req, res) {
   const category = req.query.category;
 
-  const result = getProductsByCategory(category);
+  const result = await getProductsByCategory(category);
 
   res.json(result);
 }

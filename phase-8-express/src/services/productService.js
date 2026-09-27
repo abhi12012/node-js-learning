@@ -2,7 +2,9 @@ const { Product } = require("../models/productModel");
 
 async function getProductsByCategory(category) {
   const products = await Product.find();
+  console.log("GET products result:", products);
 
+ 
   if (!category) {
     return products;
   }
