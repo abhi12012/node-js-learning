@@ -1,8 +1,9 @@
+
 const {
   getProductsByCategory,
+  getProductById,
   createProduct
 } = require("../services/productService");
-
 
 async function getProducts(req, res) {
   const category = req.query.category;
@@ -10,6 +11,14 @@ async function getProducts(req, res) {
   const result = await getProductsByCategory(category);
 
   res.json(result);
+}
+
+async function getProductByIdController(req, res) {
+  const id = req.params.id;
+
+  const product = await getProductById(id);
+
+  res.json(product);
 }
 
 async function createProductController(req, res) {
@@ -20,5 +29,7 @@ async function createProductController(req, res) {
 
 module.exports = {
   getProducts,
+  getProductById: getProductByIdController,
   createProductController
 };
+
