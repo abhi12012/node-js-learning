@@ -6,6 +6,7 @@ const productRoutes = require("./routes/productRoutes");
 const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
+app.use(express.json());
 
 app.use(requestLogger);
 

@@ -11,6 +11,14 @@ async function getProductsByCategory(category) {
     (product) => product.category.toLowerCase() === category.toLowerCase()
   );
 }
+
+async function createProduct(productData) {
+  const product = new Product(productData);
+
+  return await product.save();
+}
+
 module.exports = {
-  getProductsByCategory
+  getProductsByCategory,
+  createProduct
 };

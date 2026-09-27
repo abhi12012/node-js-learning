@@ -1,4 +1,7 @@
-const { getProductsByCategory } = require("../services/productService");
+const {
+  getProductsByCategory,
+  createProduct
+} = require("../services/productService");
 
 function getProducts(req, res) {
   const category = req.query.category;
@@ -8,6 +11,13 @@ function getProducts(req, res) {
   res.json(result);
 }
 
+async function createProductController(req, res) {
+  const product = await createProduct(req.body);
+
+  res.status(201).json(product);
+}
+
 module.exports = {
-  getProducts
+  getProducts,
+  createProductController
 };
