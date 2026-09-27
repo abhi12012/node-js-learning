@@ -25,6 +25,16 @@ async function getProductById(id) {
 
 }
 
+async function updateProduct(id, productData) {
+
+  return await Product.findByIdAndUpdate(
+  id,
+  productData,
+  { returnDocument: "after" }
+);
+
+}
+
 async function createProduct(productData) {
 
   const product = new Product(productData);
@@ -37,6 +47,7 @@ module.exports = {
 
   getProductsByCategory,
   getProductById,
+  updateProduct,
   createProduct
 
 };

@@ -1,7 +1,7 @@
-
 const {
   getProductsByCategory,
   getProductById,
+  updateProduct,
   createProduct
 } = require("../services/productService");
 
@@ -21,6 +21,14 @@ async function getProductByIdController(req, res) {
   res.json(product);
 }
 
+async function updateProductController(req, res) {
+  const id = req.params.id;
+
+  const updatedProduct = await updateProduct(id, req.body);
+
+  res.json(updatedProduct);
+}
+
 async function createProductController(req, res) {
   const product = await createProduct(req.body);
 
@@ -30,6 +38,6 @@ async function createProductController(req, res) {
 module.exports = {
   getProducts,
   getProductById: getProductByIdController,
+  updateProductController,
   createProductController
 };
-
