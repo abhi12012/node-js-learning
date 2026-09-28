@@ -1,5 +1,7 @@
-
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
+const { JWT_SECRET } = require("../config/env");
 
 const {
   createUser,
@@ -7,7 +9,6 @@ const {
 } = require("../services/userService");
 
 async function registerUser(req, res) {
-
   const { name, email, password } = req.body;
 
   const user = await createUser({
@@ -24,21 +25,17 @@ async function registerUser(req, res) {
       email: user.email
     }
   });
-
 }
 
 async function loginUser(req, res) {
-
   const { email, password } = req.body;
 
   const user = await findUserByEmail(email);
 
   if (!user) {
-
     return res.status(401).json({
       message: "Invalid email or password"
     });
-
   }
 
   const passwordMatch = await bcrypt.compare(
@@ -47,26 +44,34 @@ async function loginUser(req, res) {
   );
 
   if (!passwordMatch) {
-
     return res.status(401).json({
       message: "Invalid email or password"
     });
-
   }
+
+  const token = jwt.sign(
+    {
+      userId: user._id.toString(),
+      email: user.email
+    },
+    JWT_SECRET,
+    {
+      expiresIn: "1h"
+    }
+  );
 
   res.json({
     message: "Login successful",
+    token,
     user: {
       id: user._id,
       name: user.name,
       email: user.email
     }
   });
-
 }
 
 module.exports = {
   registerUser,
   loginUser
 };
-
