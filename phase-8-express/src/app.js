@@ -2,6 +2,8 @@
 
 const express = require("express");
 const requestLogger = require("./middleware/requestLogger");
+
+const userRoutes = require("./routes/userRoutes");
 const productRoutes = require("./routes/productRoutes");
 const errorHandler = require("./middleware/errorHandler");
 
@@ -11,6 +13,7 @@ app.use(express.json());
 app.use(requestLogger);
 
 app.use("/products", productRoutes);
+app.use("/users", userRoutes);
 
 
 app.get("/", (req, res) => {
