@@ -21,12 +21,7 @@ function authenticateToken(req, res, next) {
 
   const token = parts[1].replace(/^"|"$/g, "");
 
-  console.log("JWT CHECK:", {
-    length: token.length,
-    parts: token.split(".").length,
-    startsWithEyJ: token.startsWith("eyJ"),
-    hasQuotes: token.includes('"')
-  });
+  
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
