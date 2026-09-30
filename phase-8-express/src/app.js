@@ -61,8 +61,15 @@ app.get("/error", (req, res, next) => {
   next(new Error("Something went wrong!"));
 });
 
-
+app.use((req, res, next) => {
+  const error = new Error("Route not found");
+  error.status = 404;
+  next(error);
+});
 
 app.use(errorHandler);
+
+
+
 
 module.exports = app;
